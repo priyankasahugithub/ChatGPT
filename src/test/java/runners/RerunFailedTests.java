@@ -10,7 +10,8 @@ import io.cucumber.testng.CucumberOptions;
                 "pretty",
                 "html:target/rerun-report.html"
         },
-        monochrome = true
+        monochrome = true,
+        dryRun = true
 )
 public class RerunFailedTests extends AbstractTestNGCucumberTests {
 }
