@@ -1,0 +1,39 @@
+name: Selenium Cucumber Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install dependencies
+        run: mvn -q clean install -DskipTests
+
+      - name: Run main Cucumber test suite
+        run: mvn test -DsuiteXmlFile=testng.xml
+
+      - name: Upload Cucumber report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: target/cucumber-report.html
+
+      - name: Upload Rerun report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rerun-report
+          path: target/rerun-report.html

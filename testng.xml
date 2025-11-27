@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <!-- Step 1: Normal execution -->
+    <test name="Run Cucumber Tests">
+        <classes>
+            <class name="runners.TestRunner"/>
+        </classes>
+    </test>
+
+    <!-- Step 2: Rerun failed scenarios -->
+    <test name="ReRun Failed Tests" preserve-order="true">
+        <classes>
+            <class name="runners.RerunFailedTests"/>
+        </classes>
+    </test>
+</suite>
