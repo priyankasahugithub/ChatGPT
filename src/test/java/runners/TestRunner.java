@@ -8,6 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         features = "src/test/features",
         glue = {"stepDefinition"},
         monochrome = true,
+        dryRun = true,
         plugin = {"pretty", "html:target/cucumber-report.html",
                 "rerun:target/rerun.txt" }         // ⬅ generate failed test list}
 )
